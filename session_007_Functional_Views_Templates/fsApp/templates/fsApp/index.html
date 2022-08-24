@@ -1,0 +1,20 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'fsApp/index.css' %}" />
+</head>
+
+<h1>This is fsApp index page</h1>
+{{request.user}}
+
+<br />
+
+{{caption | title}}
+<br />
+
+{% for i in my_list %} {{i}} {% endfor %}
+
+<br />
+
+<img src="{% static 'fsApp/django.jpg' %}" width="300" alt="Example" />
+<br />
+<img src="{% static 'fsApp/djangog.jpg' %}" width="300" alt="Example" />
