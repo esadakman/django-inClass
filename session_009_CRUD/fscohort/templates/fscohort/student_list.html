@@ -1,0 +1,53 @@
+{% extends 'fscohort/base.html' %} {% block container %} {% comment %}
+<ul>
+  {% for student in students%}
+  <li>
+    {{ student.number }} - {{student.first_name}} {{student.first_name}}
+
+    <a href="{% url 'update' student.id %}" class="btn btn-primary">Update</a>
+    <a href="{% url 'delete' student.id %}" class="btn btn-danger">DELETE</a>
+  </li>
+
+  {%endfor%}
+</ul>
+{% endcomment %}
+<div class="container-fluid row">
+  <table class="table table-striped table-dark">
+    <thead class="thead-dark w-100">
+      <tr>
+        <th scope="col ">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Update</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for student in students%}
+      <tr>
+        <td>{{ student.number }}</td>
+        <td>{{ student.first_name }}</td>
+        <td>{{ student.last_name }}</td>
+        <td>
+          <a href="{% url 'update' student.id %}" class="btn btn-primary"
+            >Update</a
+          >
+        </td>
+        <td class="table-responsive-sm">
+          <a href="{% url 'delete' student.id %}" class="btn btn-danger"
+            >DELETE</a
+          >
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  <div class="d-flex w-100 justify-content-center">
+    <a href="/">
+      <button class="btn btn-success">GO HOME</button>
+    </a>
+  </div>
+</div>
+
+{% endblock container %}

@@ -1,0 +1,14 @@
+{% extends "fscohort/base.html" %} {% block container %}
+
+<h1>Home Page</h1>
+
+<h3>
+  <a href="{% url 'list' %}" class="btn btn-primary">Student App</a>
+  {% comment %} Student App {% endcomment %}
+</h3>
+<h3>
+  <a href="{% url 'add' %}" class="btn btn-success">Add Student</a>
+  {% comment %} Student App {% endcomment %}
+</h3>
+
+{% endblock container %}
