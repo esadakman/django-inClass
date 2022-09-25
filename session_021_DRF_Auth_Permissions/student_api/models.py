@@ -7,5 +7,6 @@ class Student(models.Model):
     number = models.IntegerField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
+
     def __str__(self):
         return f"{self.last_name} {self.first_name}"

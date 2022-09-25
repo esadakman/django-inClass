@@ -6,7 +6,6 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthentic
 from .permissions import IsAdminorReadOnly, IsAddedByUserorReadOnly
 
 
-
 # Create your views here.
 def home(request):
     return HttpResponse('<h1>API Page</h1>')
@@ -14,13 +13,13 @@ def home(request):
 class StudentList(generics.ListCreateAPIView):
     serializer_class = StudentSerializer
     queryset = Student.objects.all()
-    permission_classes=[IsAuthenticated]
-    
+    permission_classes=[IsAuthenticated] # ! Giriş yapmış olması gerekir kullanıcının
+    # permission_classes=[IsAdminUser]  # ! Kullanıcının admin olması gerekiyor
+    # permission_classes=[IsAuthenticatedOrReadOnly] # ? kullanıcı login değilse sadece veriyi okuyabilir
+    # permission_classes=[IsAdminorReadOnly] 
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
-
-       
 
 class StudentOperations(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StudentSerializer

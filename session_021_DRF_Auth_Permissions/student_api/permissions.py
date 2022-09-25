@@ -1,5 +1,5 @@
 from rest_framework import permissions
-
+# ! student infolarının admin ve oluşturulan kişi tarafından CRUD'lanamilmesi için permission oluşturduk
 class IsAdminorReadOnly(permissions.IsAdminUser):
     
     def has_permission(self, request, view):
@@ -16,4 +16,7 @@ class IsAddedByUserorReadOnly(permissions.BasePermission):
         if request.method == permissions.SAFE_METHODS:
             return True
         else:
+            # ? oluşturan kişi veya adminin datayı CRUD işlemi yapabilmesi için =>  
+            # return obj.user == request.user or request.user.is_staff
+            # ? sadece oluşturan kişi CRUD işlemi yapabilmesi için =>  
             return obj.user == request.user 
